@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:context="http://www.springframework.org/schema/context" 
+	xmlns:aop="http://www.springframework.org/schema/aop" 
+	xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xsi:schemaLocation="http://www.springframework.org/schema/context
+          http://www.springframework.org/schema/context/spring-context-3.2.xsd
+          http://www.springframework.org/schema/aop 
+		  http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+          http://www.springframework.org/schema/beans
+          http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+          http://code.alibabatech.com/schema/dubbo classpath:dubbo.xsd">
+
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="order" value="1" />
+		<property name="ignoreUnresolvablePlaceholders" value="true" />
+		<property name="location" value="classpath:conf.properties" />
+	</bean>
+
+	<!-- 使用annotation 自动注册bean,并检查@Required,@Autowired的属性已被注入 -->
+	<!-- <context:component-scan base-package="cn.nickid.biz.action,cn.nickid.biz.redis" /> -->
+	<context:component-scan base-package="cn.nickid.biz.action" />
+	
+	<dubbo:application name="biz" owner="nickid" organization="nickid" />
+
+	<dubbo:registry protocol="zookeeper" address="${dubbo.registry.address}" />
+
+	<dubbo:consumer timeout="${dubbo.consumer.timeout}" />
+
+	<!-- <dubbo:monitor protocol="registry" /> -->
+	
+	<!-- DB provider -->
+	<!-- <import resource="service/dbContext.xml" /> -->
+	<!-- Redis -->
+	<!-- <import resource="service/redisContext.xml" /> -->
+	
+	<!-- leadcloud provider -->
+	<import resource="service/leadcloudContext.xml" />
+	<!-- leadcloud provider -->
+</beans>
