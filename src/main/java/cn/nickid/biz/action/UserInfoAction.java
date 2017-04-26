@@ -8,26 +8,20 @@
 */
 package cn.nickid.biz.action;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.OPTIONS;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.Context;
-
+import cn.nickid.dbapi.leancloud.service.UserInfoService;
+import cn.nickid.dbapi.req.UserReq;
+import cn.nickid.dbapi.res.UserRes;
+import com.alibaba.dubbo.rpc.protocol.rest.support.ContentType;
+import com.avos.avoscloud.AVException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.alibaba.dubbo.rpc.protocol.rest.support.ContentType;
-import com.avos.avoscloud.AVException;
-
-import cn.nickid.dbapi.leancloud.service.UserInfoService;
-import cn.nickid.dbapi.req.UserReq;
-import cn.nickid.dbapi.res.UserRes;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.ws.rs.*;
+import javax.ws.rs.core.Context;
 
 /** 
 * @ClassName: UserInfoAction

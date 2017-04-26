@@ -26,7 +26,7 @@
 
 	<dubbo:registry protocol="zookeeper" address="${dubbo.registry.address}" />
 
-	<dubbo:consumer timeout="${dubbo.consumer.timeout}" />
+	<dubbo:consumer timeout="${dubbo.consumer.timeout}" retries="${dubbo.consumer.retries}" check="${dubbo.consumer.check}" />
 
 	<!-- <dubbo:monitor protocol="registry" /> -->
 	
